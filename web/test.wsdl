@@ -1,0 +1,33 @@
+<?xml version=1.0>
+<wsdl:definitions name="test" targetNamespace="http://localhost/test.wsdl">
+  <import namespace="http://localhost/test.wsdl" location="http://localhost/test.wsdl"/>
+  <wsdl:message name="getTermRequest">
+     <part name="term" type="xs:string" />
+  </wsdl:message>
+
+  <wsdl:message name="getTermResponse">
+     <part name="value" type="xs:string" />
+  </wsdl:message>
+
+  <wsdl:portType name="glossaryTerms">
+    <wsdl:operation name="getTerm">
+        <wsdl:input message="getTermRequest" />
+        <wsdl:output message="getTermResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding type="glossaryTerms" name="b1">
+  <wsdl:binding style="document"
+  transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation>
+      <wsdl:operation
+       soapAction="http://localhost/soap_server.php" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>
